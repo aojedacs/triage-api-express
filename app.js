@@ -14,8 +14,13 @@ var patientsRouter = require('./api/routes/patients');
 var urgenciesRouter = require('./api/routes/urgencies')
 
 var app = express();
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://triageuser:ocbHpTf5thQsHMJV@triage.6dnlzbl.mongodb.net/?retryWrites=true&w=majority')
+
+// mongoose.connect('mongodb+srv://triageuser:ocbHpTf5thQsHMJV@triage.6dnlzbl.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGO_URL)
+// mongoose.connect(`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}`)
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
